@@ -1,0 +1,103 @@
+package io.test.com;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+/*
+ * 자바의 입출력(I/O)
+ * 
+ * <용어 정리> 
+ * 
+ *      [소스(Source)]  -> [자바 애플리케이션]  ->  [목적지(destination)]
+ *                  입력(input)			 출력(output)
+ * 
+ *  자바  I/O의 기준은 항상 자바 애플리케이션임 !
+ *  
+ *  - 소스 : 기준이 되는 자바 애플리케이션에서 데이터를 읽어들이는 대상을 의미.
+ *  		기본적으로 키보드, 파일, 네트워크 등이 될수 있음.
+ *  
+ *  - 목적지 : 기준이 되는 자바 애플리케이션의 데이터 출력 대상을 의미함.
+ *  		  기본적으로 모니터, 파일, 네트워크 등이 될수 있음.
+ *  
+ *  - 입력 : 소스에서 기준이 되는 자바 애플리케이션으로 데이터를 읽어들이는 작업. 
+ *  		자바에서는 입력 스트림(input stream) 이라고 함.
+ *  
+ *  - 출력 : 기준이 되는 자바 애플리케이션에서 목적지로 데이터를 출력시키는 작업
+ *  		자바에서는 출력 스트림(output stream) 이라고 함.
+ *  
+ * <자바의 I/O 데이터 종류>
+ * 
+ *  - byte 
+ *  	자바의 입력 및 출력 데이터로 byte 처리 가능함.
+ *  	이미지 파일 등의 바이너리 위주 데이터 입출력 시 사용 가능.
+ *  
+ *  	InputStream (추상클래스) 
+ *   		- FileInputStream
+ *   		- BufferedInputStream
+ *   		- DataInputStream
+ *
+ *   	OutputStream (추상클래스)
+ *   		- FileOutputStream
+ *   		- BufferedOutputStream
+ *   		- DataOutputStream
+ *   		- PrintStream
+ *  - char
+ *      char 처리는 텍스트 위주 데이터 입출력시 사용 가능함.
+ *															
+ *		Reader(추상클래스)
+ *			- InputStreamReader
+ *			- FileReader
+ *			- BufferedReader
+ *
+ *		Writer(추상클래스)
+ *			- OutputStreamWriter
+ *			- FileWriter
+ *			- BufferedWriter
+ *			- PrintWriter			
+ *
+ * <자바의 표준 입출력>
+ * 
+ *  - System.in 
+ *  	표준입력으로서 키보드에서 데이털르 읽어들일때 사용됨.
+ *  	in의 자료형은 InputStream이므로 byte 단위로 처리함.
+ *  	
+ *  	int read()
+ *  	 	: 스트림 데이터 1byte를 읽음.
+ *  		   문자로 읽으려면 char 형변환해야됨 
+ *  
+ *  	int read(byte[] b)
+ *  		: 읽은 데이터를 byte 배열에 저장하고 읽은 개수를 반환함. 
+ *  	
+ *  	void close()
+ *  		: 입력스트림을 닫음.	
+ *  
+ *  - System.out
+ *  	표준출력으로서 모니터로 데이터를 출력할 때 사용됨.
+ *  	out의 데이터형은 printStream임
+ *  	대표적인 형태가 많이 사용했던 System.out.pirntln();
+ *  - Syetem.err
+ *		표준에로로서 모니터에 에러정보 출력할때 사용됨
+ *		거의 사용되지 않음
+ *																													  					 
+ * */
+// 키보드에서 입력된 데이터를 모니터에 출력
+public class Test {
+
+	public static void main(String[] args) {
+		System.out.println("데이터 입력");
+
+		InputStream is = System.in;
+
+		try {
+			int n = is.read();
+
+			System.out.println("입력값 :" + (char) n);
+
+			is.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
