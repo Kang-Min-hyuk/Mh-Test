@@ -3,16 +3,16 @@ package io.test.com;
 import java.io.File;
 
 /*
- * File Å¬·¡½º
- *  : ÆÄÀÏ ¹× µğ·ºÅä¸® °ü·ÃµÈ ¸ŞÅ¸ µ¥ÀÌÅÍ¸¦ Ã³¸®ÇÏ´Â Å¬·¡½º
- *  	ÆÄÀÏ¸í, ÆÄÀÏÅ©±â, ÀĞ±â¸ğµå, ¾²±â¸ğµå, µğ·ºÅä¸® »ı¼º µîÀÇ Ã³¸® ÀÛ¾÷
+ * File í´ë˜ìŠ¤
+ *  : íŒŒì¼ ë° ë””ë ‰í† ë¦¬ ê´€ë ¨ëœ ë©”íƒ€ ë°ì´í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
+ *  	íŒŒì¼ëª…, íŒŒì¼í¬ê¸°, ì½ê¸°ëª¨ë“œ, ì“°ê¸°ëª¨ë“œ, ë””ë ‰í† ë¦¬ ìƒì„± ë“±ì˜ ì²˜ë¦¬ ì‘ì—…
  *  
- *   	<File °´Ã¼ÀÇ »ı¼ºÀÌ ÆÄÀÏ »ı¼ºÇÏ´Â°Ô ¾Æ´Ô.>
- *   ±âÁ¸¿¡ Á¸ÀçÇÏ´Â ÆÄÀÏÀÇ ¸ŞÅ¸Á¤º¸¸¦ ¾Ë¾Æº¸±â À§ÇÑ °´Ã¼¸¦ »ı¼ºÇÔ.
+ *   	<File ê°ì²´ì˜ ìƒì„±ì´ íŒŒì¼ ìƒì„±í•˜ëŠ”ê²Œ ì•„ë‹˜.>
+ *   ê¸°ì¡´ì— ì¡´ì¬í•˜ëŠ” íŒŒì¼ì˜ ë©”íƒ€ì •ë³´ë¥¼ ì•Œì•„ë³´ê¸° ìœ„í•œ ê°ì²´ë¥¼ ìƒì„±í•¨.
  * 
- * File »ı¼ºÀÚ
+ * File ìƒì„±ì
  * 	-File(String fileName)
- * 		: ÆÄÀÏ¸íÀ» ÀÎÀÚ·Î ÁöÁ¤ÇÏ¿© File °´Ã¼¸¦ »ı¼ºÇÔ.  
+ * 		: íŒŒì¼ëª…ì„ ì¸ìë¡œ ì§€ì •í•˜ì—¬ File ê°ì²´ë¥¼ ìƒì„±í•¨.  
  * 
  * 
  * 
@@ -27,16 +27,16 @@ public class Test5 {
 		System.out.println(f.getName());
 		System.out.println(f.getPath());
 		System.out.println(f.length());
-		System.out.println(f.exists()); // ÆÄÀÏ ¶Ç´Â µğ·ºÅä¸® Á¸Àç¿©ºÎ
-		System.out.println(File.separator); // °æ·Î ±¸ºĞÀÚ
+		System.out.println(f.exists()); // íŒŒì¼ ë˜ëŠ” ë””ë ‰í† ë¦¬ ì¡´ì¬ì—¬ë¶€
+		System.out.println(File.separator); // ê²½ë¡œ êµ¬ë¶„ì
 
-		boolean b = new File("C:\\busTest\\aaa").mkdir(); // test µğ·ºÅä¸®¾È¿¡ aaa
-															// µğ·ºÅä¸® »ı¼º
-		new File("C:\\busTest", "Test4.java").delete(); // »èÁ¦ÇÏ°í ¼º°ø¿©ºÎ ¸®ÅÏ
+		boolean b = new File("C:\\busTest\\aaa").mkdir(); // test ë””ë ‰í† ë¦¬ì•ˆì— aaa// 
+															
+		new File("C:\\busTest", "Test4.java").delete(); // ì‚­ì œí•˜ê³  ì„±ê³µì—¬ë¶€ ë¦¬í„´
 
 		String[] list = new File("C:\\busTest").list();
 		for (String str : list) {
-			System.out.println("test Æú´õ³»¿ë : " + str);
+			System.out.println("test í´ë”ë‚´ìš© : " + str);
 		}
 
 		// if(f.exists()){
