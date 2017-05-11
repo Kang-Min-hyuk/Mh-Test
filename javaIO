@@ -10,7 +10,7 @@ import java.io.InputStream;
  * <용어 정리> 
  * 
  *      [소스(Source)]  -> [자바 애플리케이션]  ->  [목적지(destination)]
- *                  입력(input)			 출력(output)
+ *                  입력(input)		출력(output)
  * 
  *  자바  I/O의 기준은 항상 자바 애플리케이션임 !
  *  
@@ -77,7 +77,7 @@ import java.io.InputStream;
  *  	out의 데이터형은 printStream임
  *  	대표적인 형태가 많이 사용했던 System.out.pirntln();
  *  - Syetem.err
- *		표준에로로서 모니터에 에러정보 출력할때 사용됨
+ *		표준에러로서 모니터에 에러정보 출력할때 사용됨
  *		거의 사용되지 않음
  *																													  					 
  * */
