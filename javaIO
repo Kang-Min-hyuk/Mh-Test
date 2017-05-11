@@ -1,4 +1,4 @@
-theme: jekyll-theme-tactile
+
 package io.test.com;
 
 import java.io.IOException;
