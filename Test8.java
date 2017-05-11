@@ -6,32 +6,32 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-// C:\\busTest Æú´õ¿¡ ÀÌ¹ÌÁö ¿øº»ÆÄÀÏÀ» º¹»çÇÏ¿© µ¿ÀÏÇÑ ÀÌ¸§À¸·Î ÆÄÀÏ »ı¼ºÇÏ±â
+// C:\\busTest í´ë”ì— ì´ë¯¸ì§€ ì›ë³¸íŒŒì¼ì„ ë³µì‚¬í•˜ì—¬ ë™ì¼í•œ ì´ë¦„ìœ¼ë¡œ íŒŒì¼ ìƒì„±í•˜ê¸°
 public class Test8 {
 
 	public static void main(String[] args) {
 		
 		
 		try {
-			// ÀÔ·Â ½ºÆ®¸² ÁØºñ
+			// ì…ë ¥ ìŠ¤íŠ¸ë¦¼ ì¤€ë¹„
 			File readFile = new File("C:\\busTest","sg.jpg");
 			FileInputStream fStream = new FileInputStream(readFile);
 			
-			int size = (int) readFile.length(); // ¹ÙÀÌÆ®´ÜÀ§ ÆÄÀÏÅ©±â
+			int size = (int) readFile.length(); // ë°”ì´íŠ¸ë‹¨ìœ„ íŒŒì¼í¬ê¸°
 			
-			// Ãâ·Â ½ºÆ®¸² ÁØºñ
+			// ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ ì¤€ë¹„
 			File writeFile = new File("C:\\busTest","hg.jpg");
 			FileOutputStream outputStream = new FileOutputStream(writeFile,false);
 			
-			byte[] arrByte = new byte[size]; // size °ª¸¸Å­ byte ¹è¿­ »ı¼º
+			byte[] arrByte = new byte[size]; // size ê°’ë§Œí¼ byte ë°°ì—´ ìƒì„±
 			
 			
-			int count = fStream.read(arrByte); // ÀÔ·Â½ºÆ®¸² µ¿ÀÛ
+			int count = fStream.read(arrByte); // ì…ë ¥ìŠ¤íŠ¸ë¦¼ ë™ì‘
 			
-			outputStream.write(arrByte); // Ãâ·Â½ºÆ®¸² µ¿ÀÛ
+			outputStream.write(arrByte); // ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ë™ì‘
 			
-			fStream.close();
-			outputStream.close();
+			fStream.close();//   close(); ë‹«ê¸°
+			outputStream.close(); // close(); 
 			
 		} catch (IOException e) {
 			
