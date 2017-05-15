@@ -75,7 +75,7 @@ public class Server {
 			ois.close(); // 입력스트림 닫기 
 			socket.close(); // 소켓 닫기
 			
-			serverSocket.close(); //  
+			serverSocket.close(); 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
