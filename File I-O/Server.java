@@ -11,31 +11,31 @@ import java.net.Socket;
 
 /*
  * 
- * Socket Å¬·¡½º 
- *   ¿ø°İ È£½ºÆ®¿¡ ´ëÇÑ I/O ±â¹İÀÇ Åë½Å »óÅÂ¸¦ ±¸ÃàÇÏ°Ô ÇØÁÜ.
+ * Socket í´ë˜ìŠ¤ 
+ *   ì›ê²© í˜¸ìŠ¤íŠ¸ì— ëŒ€í•œ I/O ê¸°ë°˜ì˜ í†µì‹  ìƒíƒœë¥¼ êµ¬ì¶•í•˜ê²Œ í•´ì¤Œ.
  *   
  *   
- * Socket Å¬·¡½º <ÁÖ¿ä ¸Ş¼Òµå>
- *  void close() ¼ÒÄÏ °´Ã¼¸¦ ´İÀ½.
+ * Socket í´ë˜ìŠ¤ <ì£¼ìš” ë©”ì†Œë“œ>
+ *  void close() ì†Œì¼“ ê°ì²´ë¥¼ ë‹«ìŒ.
  *  
- *  InetAddress getInetAddress() ¼ÒÄÏ °´Ã¼·ÎºÎÅÍ InetAddress ¹İÈ¯
+ *  InetAddress getInetAddress() ì†Œì¼“ ê°ì²´ë¡œë¶€í„° InetAddress ë°˜í™˜
  *  
- *  InetAddress getLocalAddress() ·ÎÄÃ ÁÖ¼Ò¸¦ ¹İÈ¯
+ *  InetAddress getLocalAddress() ë¡œì»¬ ì£¼ì†Œë¥¼ ë°˜í™˜
  *  
- *  InputStream getInputStream() ¼ÒÄÏ °´Ã¼·ÎºÎÅÍ InputStream ¹İÈ¯ 
+ *  InputStream getInputStream() ì†Œì¼“ ê°ì²´ë¡œë¶€í„° InputStream ë°˜í™˜ 
  *  
- *  int port() ¼ÒÄÏ °´Ã¼ÀÇ Æ÷Æ®¹øÈ£¸¦ ¹İÈ¯
+ *  int port() ì†Œì¼“ ê°ì²´ì˜ í¬íŠ¸ë²ˆí˜¸ë¥¼ ë°˜í™˜
  *  
- * ServerSocket Å¬·¡½º
- * 	: Socket¿¡ ´ëÀÀµÇ´Â ¿ø°İ È£½ºÆ®ÀÇ ¼ÒÄÏÀ» ÀÇ¹ÌÇÔ.
- * 	  ServerSocket Å¬·¡½º´Â accept() ¸Ş¼Òµå¸¦ ÅëÇØ Å¬¶óÀÌ¾ğÆ® ¿äÃ»À» ¹Ş¾ÆµéÀÓ.
+ * ServerSocket í´ë˜ìŠ¤
+ * 	: Socketì— ëŒ€ì‘ë˜ëŠ” ì›ê²© í˜¸ìŠ¤íŠ¸ì˜ ì†Œì¼“ì„ ì˜ë¯¸í•¨.
+ * 	  ServerSocket í´ë˜ìŠ¤ëŠ” accept() ë©”ì†Œë“œë¥¼ í†µí•´ í´ë¼ì´ì–¸íŠ¸ ìš”ì²­ì„ ë°›ì•„ë“¤ì„.
  * 
- * ServerSocket <ÁÖ¿ä ¸Ş¼Òµå>
- * 	void close() ServerSocket °´Ã¼¸¦ ´İÀ½
+ * ServerSocket <ì£¼ìš” ë©”ì†Œë“œ>
+ * 	void close() ServerSocket ê°ì²´ë¥¼ ë‹«ìŒ
  * 
- *  int getLocalport() ServerSocket °´Ã¼¿¡ ¼³Á¤µÈ Æ÷Æ®¹øÈ£¸¦ ¹İÈ¯ÇÔ.
+ *  int getLocalport() ServerSocket ê°ì²´ì— ì„¤ì •ëœ í¬íŠ¸ë²ˆí˜¸ë¥¼ ë°˜í™˜í•¨.
  *  
- *  Socket accept() Å¬¶óÀÌ¾ğÆ®ÀÇ ¿äÃ»À» ±â´Ù¸®´Â ¸Ş¼Òµå
+ *  Socket accept() í´ë¼ì´ì–¸íŠ¸ì˜ ìš”ì²­ì„ ê¸°ë‹¤ë¦¬ëŠ” ë©”ì†Œë“œ
  * 	  
  * */
 public class Server {
@@ -46,35 +46,36 @@ public class Server {
 			
 			ServerSocket serverSocket = new ServerSocket(5001);
 			
-			// accept() È£ÃâµÇ¸é Å¬¶óÀÌ¾ğÆ®ÀÇ ¿äÃ»Á¤º¸¸¦ ±â´Ù¸².
-			// Å¬¶óÀÌ¾ğÆ®°¡ ¼­¹ö¿¡ Á¢¼ÓµÇ¸é
-			// Å¬¶óÀÌ¾ğÆ® Á¤º¸¸¦ °¡Áø ¼ÒÄÏ °´Ã¼¸¦ ¹İÈ¯ÇÔ.
+			// accept() í˜¸ì¶œë˜ë©´ í´ë¼ì´ì–¸íŠ¸ì˜ ìš”ì²­ì •ë³´ë¥¼ ê¸°ë‹¤ë¦¼.
+			// í´ë¼ì´ì–¸íŠ¸ê°€ ì„œë²„ì— ì ‘ì†ë˜ë©´
+			// í´ë¼ì´ì–¸íŠ¸ ì •ë³´ë¥¼ ê°€ì§„ ì†Œì¼“ ê°ì²´ë¥¼ ë°˜í™˜í•¨.
 			Socket socket = serverSocket.accept();
 			
 			InetAddress clientAddress = socket.getLocalAddress();
 			int clientPort = socket.getPort();
-			System.out.println("Å¬¶óÀÌ¾ğÆ®°¡ Á¢¼ÓµÊ. ");
+			System.out.println("í´ë¼ì´ì–¸íŠ¸ê°€ ì ‘ì†ë¨. ");
 			System.out.println("host : " + clientAddress + " , " + clientPort);
 			
-			// ÀÔ·Â½ºÆ®¸² ÁØºñ
+			// ì…ë ¥ìŠ¤íŠ¸ë¦¼ ì¤€ë¹„
 			InputStream is = socket.getInputStream();
 			ObjectInputStream ois = new ObjectInputStream(is);
 			
 			Object object = ois.readObject();
-			System.out.println("Å¬¶óÀÌ¾ğÆ®·ÎºÎÅÍ ÀÔ·ÂµÈ °ª: " +object);
+			System.out.println("í´ë¼ì´ì–¸íŠ¸ë¡œë¶€í„° ì…ë ¥ëœ ê°’: " +object);
 			
-			// Ãâ·Â½ºÆ®¸² ÁØºñ 
+			// ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ì¤€ë¹„ 
 			OutputStream os = socket.getOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(os);
 			
-			oos.writeObject("¼­¹ö·ÎºÎÅÍ ¹ŞÀº °ª: " + object);
+			oos.writeObject("ì„œë²„ë¡œë¶€í„° ë°›ì€ ê°’: " + object);
 			
-			// ÀÚ¿ø ´İ±â 
-			oos.flush(); // ¹öÆÛ ºñ¿ì±â
-			oos.close(); // Ãâ·Â½ºÆ®¸² ´İ±â
-			ois.close(); // ÀÔ·Â½ºÆ®¸² ´İ±â 
-			socket.close(); // ¼ÒÄÏ ´İ±â
+			// ìì› ë‹«ê¸° 
+			oos.flush(); // ë²„í¼ ë¹„ìš°ê¸°
+			oos.close(); // ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ë‹«ê¸°
+			ois.close(); // ì…ë ¥ìŠ¤íŠ¸ë¦¼ ë‹«ê¸° 
+			socket.close(); // ì†Œì¼“ ë‹«ê¸°
 			
+			serverSocket.close(); // 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
