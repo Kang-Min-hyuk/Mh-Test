@@ -8,53 +8,53 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /*
- *	[ ¸Þ¸ð¸®¿¡ »ý¼ºµÈ °´Ã¼´Â ºñ¿µ¼Ó¼º(=ÀÏ½Ã¼º)À» °¡Áü ]
+ *	[ ë©”ëª¨ë¦¬ì— ìƒì„±ëœ ê°ì²´ëŠ” ë¹„ì˜ì†ì„±(=ì¼ì‹œì„±)ì„ ê°€ì§ ]
  * 
- *  ÀÚ¹Ù¿¡¼­´Â '°´Ã¼ Á÷·ÄÈ­(Object Serialization)' ±â´ÉÀ» Á¦°øÇÔ.
- *  °´Ã¼ Á÷·ÄÈ­¸¦ Àû¿ëÇÏ¸é ¸Þ¸ð¸®¿¡ »ý¼ºµÈ ÀÎ½ºÅÏ½º Á¤º¸¸¦
- *  ÆÄÀÏÀÌ³ª ³×Æ®¿öÅ©¸¦ ÅëÇØ¼­ ¿µ¼Ó¼ºÀ» À¯ÁöÇÒ ¼ö ÀÖÀ½.
+ *  ìžë°”ì—ì„œëŠ” 'ê°ì²´ ì§ë ¬í™”(Object Serialization)' ê¸°ëŠ¥ì„ ì œê³µí•¨.
+ *  ê°ì²´ ì§ë ¬í™”ë¥¼ ì ìš©í•˜ë©´ ë©”ëª¨ë¦¬ì— ìƒì„±ëœ ì¸ìŠ¤í„´ìŠ¤ ì •ë³´ë¥¼
+ *  íŒŒì¼ì´ë‚˜ ë„¤íŠ¸ì›Œí¬ë¥¼ í†µí•´ì„œ ì˜ì†ì„±ì„ ìœ ì§€í•  ìˆ˜ ìžˆìŒ.
  *  
- *  <°´Ã¼ Á÷·ÄÈ­¸¦ ¸í½ÃÇÏ´Â ¹æ¹ý>
- *  public class Å¬·¡½º¸í  implements Serializable{}
+ *  <ê°ì²´ ì§ë ¬í™”ë¥¼ ëª…ì‹œí•˜ëŠ” ë°©ë²•>
+ *  public class í´ëž˜ìŠ¤ëª…  implements Serializable{}
  *  
  *  <Serializable>
- *   - ´ÜÁö ¸¶Å· ±â´ÉÀ» °¡Áö´Â ¿ëµµ·Î »ç¿ëÇÏ´Â ¸¶Ä¿(marker) ÀÎÅÍÆäÀÌ½º
+ *   - ë‹¨ì§€ ë§ˆí‚¹ ê¸°ëŠ¥ì„ ê°€ì§€ëŠ” ìš©ë„ë¡œ ì‚¬ìš©í•˜ëŠ” ë§ˆì»¤(marker) ì¸í„°íŽ˜ì´ìŠ¤
  *   
- *   <°´Ã¼ Áö·ÄÈ­¸¦ À§ÇÑ I/OÅ¬·¡½º>
+ *   <ê°ì²´ ì§ë ¬í™”ë¥¼ ìœ„í•œ I/Oí´ëž˜ìŠ¤>
  *   
  *    - ObjectInputStream
- *    	: °´Ã¼ Á÷·ÄÈ­µÈ µ¥ÀÌÅÍ¸¦ ÀÐÀ» ¶§ »ç¿ëÇÔ. ¿ªÁ÷·ÄÈ­ÇÒ ¶§ »ç¿ëÇÔ.
+ *    	: ê°ì²´ ì§ë ¬í™”ëœ ë°ì´í„°ë¥¼ ì½ì„ ë•Œ ì‚¬ìš©í•¨. ì—­ì§ë ¬í™”í•  ë•Œ ì‚¬ìš©í•¨.
  *    
  *    - ObjectOutputStream
- *   	: ÀÎ½ºÅÏ½º¸¦ °´Ã¼ Á÷·ÄÈ­·Î Ãâ·ÂÇÒ ¶§ »ç¿ëÇÔ.
+ *   	: ì¸ìŠ¤í„´ìŠ¤ë¥¼ ê°ì²´ ì§ë ¬í™”ë¡œ ì¶œë ¥í•  ë•Œ ì‚¬ìš©í•¨.
  *   
- *   <°´Ã¼ Á÷·ÄÈ­ÀÇ Æ¯Â¡>
- *   - Sereializable ÀÎÅÍÆäÀÌ½º¸¦ »ç¿ëÇÔ.
- *   - ¸Þ¸ð¸®¿¡ »ý¼ºµÈ ÀÎ½ºÅÏ½º¸¦ ³»ºÎÀûÀ¸·Î byte·Î Ã³¸®ÇÔ.
- *   - byte ´ÜÀ§·Î Ã³¸®µÇ±â ¶§¹®¿¡ ¹Ýµå½Ã ObjectInputStream°ú
- *     ObjectOutputStreamÀ» »ç¿ëÇØ¾ß µÊ.
- *   - ¿¬¼âÀûÀ¸·Î ¹ß»ýµÊ. Á÷·ÄÈ­ µÉ °´Ã¼ÀÇ ¸â¹öº¯¼ö°¡ ÂüÁ¶ÇÏ´Â
- *     °´Ã¼±îÁöµµ ¿¬¼âÀûÀ¸·Î °´Ã¼ Á÷·ÄÈ­µÈ´Ù´Â ÀÇ¹Ì.
- *   - ´ëºÎºÐÀÇ API´Â ¸ðµÎ °´Ã¼ Áö·ÄÈ­ °¡´ÉÇÑ Å¬·¡½ºµéÀÓ.(String,ArrayList)
- *   - °´Ã¼ Á÷·ÄÈ­¿¡¼­ Á¦¿Ü½Ã´Â ¹æ¹ýÀº transient Å°¿öµå·Î ¸í½ÃÇÏ¸é µÊ.  
+ *   <ê°ì²´ ì§ë ¬í™”ì˜ íŠ¹ì§•>
+ *   - Sereializable ì¸í„°íŽ˜ì´ìŠ¤ë¥¼ ì‚¬ìš©í•¨.
+ *   - ë©”ëª¨ë¦¬ì— ìƒì„±ëœ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ë‚´ë¶€ì ìœ¼ë¡œ byteë¡œ ì²˜ë¦¬í•¨.
+ *   - byte ë‹¨ìœ„ë¡œ ì²˜ë¦¬ë˜ê¸° ë•Œë¬¸ì— ë°˜ë“œì‹œ ObjectInputStreamê³¼
+ *     ObjectOutputStreamì„ ì‚¬ìš©í•´ì•¼ ë¨.
+ *   - ì—°ì‡„ì ìœ¼ë¡œ ë°œìƒë¨. ì§ë ¬í™” ë  ê°ì²´ì˜ ë©¤ë²„ë³€ìˆ˜ê°€ ì°¸ì¡°í•˜ëŠ”
+ *     ê°ì²´ê¹Œì§€ë„ ì—°ì‡„ì ìœ¼ë¡œ ê°ì²´ ì§ë ¬í™”ëœë‹¤ëŠ” ì˜ë¯¸.
+ *   - ëŒ€ë¶€ë¶„ì˜ APIëŠ” ëª¨ë‘ ê°ì²´ ì§€ë ¬í™” ê°€ëŠ¥í•œ í´ëž˜ìŠ¤ë“¤ìž„.(String,ArrayList)
+ *   - ê°ì²´ ì§ë ¬í™”ì—ì„œ ì œì™¸ì‹œëŠ” ë°©ë²•ì€ transient í‚¤ì›Œë“œë¡œ ëª…ì‹œí•˜ë©´ ë¨.  
  *       
  * */
-// Person °´Ã¼¸¦ Á÷·ÄÈ­ ½ÃÄÑ¼­ ÆÄÀÏ·Î °¡Á®¿À±â
+// Person ê°ì²´ë¥¼ ì§ë ¬í™” ì‹œì¼œì„œ íŒŒì¼ë¡œ ê°€ì ¸ì˜¤ê¸°
 public class Test5_0511 {
 
 	public static void main(String[] args) {
 
-		Person person = new Person("È«±æµ¿",30);
+		Person person = new Person("í™ê¸¸ë™",30);
 		
 		File file = new File("C:\\bustest","serial.dat");
 		try {
-			// Ãâ·Â½ºÆ®¸² ÁØºñ
+			// ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ì¤€ë¹„
 			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			
-			oos.writeObject(person); // Á÷·ÄÈ­ ½ÃÅ°±â 
+			oos.writeObject(person); // ì§ë ¬í™” ì‹œí‚¤ê¸° 
 			
-			// ÀÚ¿ø´Ý±â (±âº»ÀÔÃâ·ÂÀÌ ¾Æ´Ñ ÀÔÃâ·Â ÀÚ¿øÀº ²À ´Ý¾Æ¾ß µÊ)
+			// ìžì›ë‹«ê¸° (ê¸°ë³¸ìž…ì¶œë ¥ì´ ì•„ë‹Œ ìž…ì¶œë ¥ ìžì›ì€ ê¼­ ë‹«ì•„ì•¼ ë¨)
 			oos.close();
 		} catch (FileNotFoundException e) { // FileOutputStream
 			e.printStackTrace();
