@@ -6,7 +6,7 @@ public class CompanyDTO {
 	private String comNm;
 	private String filmNm;
 	
-	public ComanyDTo(){
+	public ComanyDTO(){
 	
 	}
 	
