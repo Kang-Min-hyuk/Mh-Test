@@ -6,7 +6,9 @@ public class CompanyDTO {
 	private String comNm;
 	private String filmNm;
 	
+	public ComanyDTo(){
 	
+	}
 	
 	public CompanyDTO(String comCd, String comNm, String filmNm) {
 		super();
