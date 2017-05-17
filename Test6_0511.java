@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-// ÆÄÀÏ·ÎºÎÅÍ Person °´Ã¼¸¦ ¿ªÁú·ÄÈ­ ½ÃÄÑ¼­ °¡Á®¿À±â
+// íŒŒì¼ë¡œë¶€í„° Person ê°ì²´ë¥¼ ì—­ì§ë ¬í™” ì‹œì¼œì„œ ê°€ì ¸ì˜¤ê¸°
 public class Test6_0511 {
 
 	public static void main(String[] args) {
@@ -16,11 +16,11 @@ public class Test6_0511 {
 			FileInputStream fis = new FileInputStream(file);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
-			Person person = (Person) ois.readObject(); // ¿ªÁ÷·ÄÈ­
+			Person person = (Person) ois.readObject(); // ì—­ì§ë ¬í™”
 
 			System.out.println(person.getName() + " " + person.getAge());
 
-			// ÀÔÃâ·Â ÀÚ¿ø ´İ±â
+			// ì…ì¶œë ¥ ìì› ë‹«ê¸°
 			ois.close();
 		} catch (FileNotFoundException e) { // FileInputStream
 			e.printStackTrace();
