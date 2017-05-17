@@ -77,9 +77,9 @@ class ActHandler extends DefaultHandler{
 
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		if(qName.equals("movieCd")){
+		if(qName.equalsIgnoreCase("moviecd")){
 			dto.setMovieCd(value);
-		} else if(qName.equals("movieNm")){
+		} else if(qName.equalsIgnoreCase("movienm")){// 
 			dto.setMovieNm(value);
 		} else if(qName.equals("repNationNm")){
 			dto.setrepNationNm(value);
